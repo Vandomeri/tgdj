@@ -1,0 +1,20 @@
+from telegram_django_bot.models import BotMenuElem
+from .models import Quiz
+from django.utils.translation import gettext_lazy as _
+from telegram_django_bot import forms as td_forms
+
+
+class BotMenuElemForm(td_forms.TelegramModelForm):
+    form_name = _("Menu elem")
+
+    class Meta:
+        model = BotMenuElem
+        fields = ["command", "is_visable", "callbacks_db", "message", "buttons_db"]
+
+
+class QuizForm(td_forms.TelegramModelForm):
+    form_name = "Quiz elem"
+
+    class Meta:
+        model = Quiz
+        fields = ["name"]
